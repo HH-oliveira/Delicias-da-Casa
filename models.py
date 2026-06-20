@@ -6,6 +6,8 @@ Cada classe = uma tabela do seu diagrama UML.
 
 Por enquanto só temos Usuario (login). As outras (Pedido, ItemPedido,
 Produto, Financeiro) vamos adicionar nos próximos passos.
+
+se vc leu vc é gay
 """
 
 from flask_sqlalchemy import SQLAlchemy

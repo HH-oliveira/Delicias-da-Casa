@@ -1,0 +1,117 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #e8f1fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background-color: #eef1f5;
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    width: 320px;
+    box-shadow: 0 8px 24px rgba(30, 60, 100, 0.12);
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+}
+
+h1 {
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #3a86d6;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.campo {
+    position: relative;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f7f8fa;
+    color: #333;
+    font-size: 0.95rem;
+    box-shadow: inset 0 0 0 1px #dde2e8;
+}
+
+input::placeholder {
+    color: #97a0ab;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1.5px #3a86d6;
+}
+
+.toggle-senha {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #97a0ab;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.toggle-senha:hover {
+    color: #3a86d6;
+}
+
+button[type="submit"] {
+    background-color: #3a86d6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    transition: background-color 0.15s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2f70b8;
+}
+
+.erro {
+    background-color: #fdeaea;
+    color: #c0392b;
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 0.4rem;
+}

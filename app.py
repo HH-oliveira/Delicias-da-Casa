@@ -55,11 +55,63 @@ def login():
 
     return render_template("login.html")
 
+@app.route("/cadastro", methods=["GET", "POST"])
+def cadastro():
+    if request.method == "POST":
+        usuario_digitado = request.form.get("usuario", "").strip()
+        email_digitado = request.form.get("email", "").strip()
+        email_confirmacao = request.form.get("email_confirmacao", "").strip()
+        senha_digitada = request.form.get("senha", "")
+        senha_confirmacao = request.form.get("senha_confirmacao", "")
+
+    if not usuario_digitado or not email_digitado or not senha_digitada:
+        flash("preencha todos os campos")
+        return redirect(url_for("cadastro"))
+
+    if email_digitado != email_confirmacao:
+        flash("os emails não coincidem")
+        return redirect(url_for("cadastro"))
+    
+    if senha_digitada != senha_confirmacao:
+        flash("as senhas não coincidem")
+        return redirect(url_for("cadastro"))
+    
+    if len(senha_digitada) < 4:
+        flash("a senha deve ter pelo menos 4 caracteres")
+        return redirect(url_for("cadastro"))
+    
+    ja_existe = Usuario.query.filter(
+        (Usuario.usuario == usuario_digitado) | (Usuario.email == email_digitado)
+    ).first()
+
+    if ja_existe:
+            flash("Usuário ou email já cadastrado.")
+            return redirect(url_for("cadastro"))
+ 
+        # Tudo certo: cria o novo usuário
+    novo_usuario = Usuario(usuario=usuario_digitado, email=email_digitado)
+    novo_usuario.set_senha(senha_digitada)
+    db.session.add(novo_usuario)
+    db.session.commit()
+ 
+    flash("Cadastro realizado com sucesso! Faça login.")
+    return redirect(url_for("login"))
+ 
+    return render_template("cadastro.html")
 
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("login"))
+ 
+ 
+if __name__ == "__main__":
+    with app.app_context():
+        # Cria o arquivo banco.db e as tabelas, se ainda não existirem.
+        db.create_all()
+    app.run(debug=True)
+
+
 
 
 if __name__ == "__main__":

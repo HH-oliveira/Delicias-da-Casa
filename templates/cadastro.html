@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Delícias da Casa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="card">
+        <a href="{{ url_for('login') }}" class="botao-voltar">← Voltar</a>
+
+        <div class="logo-wrapper">
+            <img class="logo" src="{{ url_for('static', filename='img/DeliciasdaCasalogo.jpeg') }}" alt="Delícias da Casa">
+        </div>
+
+        <h1>criar conta em Delícias da Casa</h1>
+
+        {% with mensagens = get_flashed_messages() %}
+            {% if mensagens %}
+                {% for m in mensagens %}
+                    <div class="erro">{{ m }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('cadastro') }}">
+            <div class="campo">
+                <input type="text" id="usuario" name="usuario" placeholder="nome de usuário" required autofocus>
+            </div>
+
+            <div class="campo">
+                <input type="email" id="email" name="email" placeholder="email" required>
+            </div>
+
+            <div class="campo">
+                <input type="email" id="email_confirmacao" name="email_confirmacao" placeholder="confirme o email" required>
+            </div>
+
+            <div class="campo">
+                <input type="password" id="senha" name="senha" placeholder="senha" required>
+                <button type="button" class="toggle-senha" onclick="alternarVisibilidade('senha')" aria-label="Mostrar ou esconder senha">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="campo">
+                <input type="password" id="senha_confirmacao" name="senha_confirmacao" placeholder="confirme a senha" required>
+                <button type="button" class="toggle-senha" onclick="alternarVisibilidade('senha_confirmacao')" aria-label="Mostrar ou esconder senha">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <p class="link-alternativo">
+            Já tem conta? <a href="{{ url_for('login') }}">Fazer login</a>
+        </p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

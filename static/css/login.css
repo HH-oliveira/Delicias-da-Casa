@@ -18,8 +18,25 @@ body {
     border-radius: 16px;
     padding: 2.5rem 2.5rem 2rem;
     width: 400px;
-    height: 500px;
+    min-height: 500px;
     box-shadow: 0 8px 24px rgba(30, 60, 100, 0.12);
+    position: relative;
+}
+.botao-voltar {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background-color: #3a86d6;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight:600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: background-color o.15s ease;
+}
+.botao-voltar:hover {
+    background-color: #2f70b8;
 }
 
 .logo-wrapper {
@@ -120,3 +137,21 @@ button[type="submit"]:hover {
     border-radius: 6px;
     margin-bottom: 0.4rem;
 }
+
+.link-alternativo {
+    text-align: left;
+    font-size: 0.85rem;
+    color: #000000;
+    margin-top: 1rem;
+}
+
+.link-alternativo a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-alternativo a:hover {
+    text-decoration: underline;
+}
+
